@@ -1,0 +1,52 @@
+paths:
+  raw_data: "data/raw/245_1.csv"
+  processed_data: "data/processed/reviews_clean.parquet"
+  results_dir: "results"
+  results_csv: "results/results.csv"
+  artifacts_dir: "results/artifacts"
+  assets_dir: "assets"
+
+data:
+  text_column: "reviews.text"
+  rating_column: "reviews.rating"
+  did_purchase_column: "reviews.didPurchase"
+
+preprocessing:
+  lowercase: true
+  remove_punctuation: true
+  remove_numbers: true
+  remove_stopwords: true
+  stemming: false
+  lemmatization: true
+  preserve_negations: true
+  expand_contractions: true
+  language: "english"
+
+split:
+  test_size: 0.3
+  random_state: 101
+  stratify: true
+  val_size: 0.1
+
+features:
+  word_tfidf:
+    sublinear_tf: true
+    analyzer: "word"
+    ngram_range: [1, 2]
+    max_features: 20000
+  char_tfidf:
+    sublinear_tf: true
+    analyzer: "char"
+    ngram_range: [2, 6]
+    max_features: 80000
+
+models:
+  svm:
+    class_weight: "balanced"
+    grid_C: [0.5, 1.0, 2.0, 4.0]
+  sgd:
+    class_weight: "balanced"
+    max_iter: 300
+    tol: 1.0e-3
+    grid_alpha: [0.0001, 1.0e-05, 1.0e-06]
+    loss: "hinge"
