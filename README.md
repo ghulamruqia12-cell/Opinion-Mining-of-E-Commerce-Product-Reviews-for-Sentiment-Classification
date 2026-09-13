@@ -59,6 +59,7 @@ The system analyzes customer reviews from the Datafiniti Amazon Reviews dataset 
 **Datafiniti Amazon Reviews Dataset**
 
 The dataset contains e-commerce product information, ratings, and customer review text.
+Link: (https://www.kaggle.com/datasets/datafiniti/grammar-and-online-product-reviews)
 
 ## Key Findings
 
